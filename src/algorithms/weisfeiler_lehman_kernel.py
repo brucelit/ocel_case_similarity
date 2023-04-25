@@ -110,8 +110,6 @@ def get_normalized_similarity_score(digraph1, digraph2, int_id, iteration=1):
                 int_id += 1
                 possible_label_dict[pre_suc_lst] = int_id
                 to_change_digraph1[each_node] = int_id
-                # print(each_node, pre_suc_lst, "new label:", int_id)
-
             else:
                 # print(each_node, pre_suc_lst, "new label:", possible_label_dict[pre_suc_lst])
                 to_change_digraph1[each_node] = possible_label_dict[pre_suc_lst]
@@ -129,10 +127,9 @@ def get_normalized_similarity_score(digraph1, digraph2, int_id, iteration=1):
                 int_id += 1
                 possible_label_dict[pre_suc_lst] = int_id
                 to_change_digraph2[each_node] = int_id
-                print(each_node, pre_suc_lst, "new label:", int_id)
-
+                # print(each_node, pre_suc_lst, "new label:", int_id)
             else:
-                print(each_node, pre_suc_lst, "new label:", possible_label_dict[pre_suc_lst])
+                # print(each_node, pre_suc_lst, "new label:", possible_label_dict[pre_suc_lst])
                 to_change_digraph2[each_node] = possible_label_dict[pre_suc_lst]
 
         for k, v in to_change_digraph1.items():

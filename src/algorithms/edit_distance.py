@@ -1,6 +1,5 @@
 import networkx as nx
 
-
 def node_ins_del_cost(n):
     return 1
 
@@ -29,7 +28,7 @@ def edge_subst_cost(e1, e2, d1, d2):
 
 
 def get_ged(digraph1, digraph2):
-    path, best_cost = nx.optimal_edit_paths(digraph1,
+    path, best_cost = sm.optimal_edit_paths(digraph1,
                           digraph2,
                           node_match=lambda a,b: a['label'] == b['label'],
                           node_del_cost=node_ins_del_cost,
@@ -63,14 +62,17 @@ if __name__ == '__main__':
 
     # for edge in digraph1.edges:
     #     print(digraph1.nodes[edge[0]]['label'])
+    for e1 in digraph1.edges:
+        for e2 in digraph2.edges:
+            if digraph1.nodes[e1[0]]['label'] == digraph2.nodes[e2[0]]['label'] and digraph1.nodes[e1[1]]['label'] == digraph2.nodes[e2[1]]['label']:
+                print("match")
 
-    path, best_cost = nx.optimal_edit_paths(digraph1,
-                          digraph2,
-                          node_match=lambda a,b: a['label'] == b['label'],
-                          node_del_cost=node_ins_del_cost,
-                          node_subst_cost=node_subs_cost,
-                          node_ins_cost=node_ins_del_cost,
-                          edge_del_cost=edge_ins_del_cost,
-                          edge_ins_cost=edge_ins_del_cost,
-                          edge_subst_cost=edge_subst_cost)
+    # path, best_cost = sm.optimal_edit_paths(digraph1, digraph2,
+    #                       node_match=lambda a,b: a['label'] == b['label'],
+    #                       node_subst_cost=node_subs_cost,
+    #                       node_del_cost=node_ins_del_cost,
+    #                       node_ins_cost=node_ins_del_cost,
+    #                       edge_del_cost=edge_ins_del_cost,
+    #                       edge_ins_cost=edge_ins_del_cost,
+    #                       edge_subst_cost=edge_subst_cost)
 
