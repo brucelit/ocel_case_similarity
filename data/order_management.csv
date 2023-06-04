@@ -1,0 +1,31 @@
+ocel:eid,ocel:timestamp,ocel:activity,value,ocel:type:academic_staff,ocel:type:administrative_staff,ocel:type:achievements,ocel:type:conversion,ocel:type:assessment_plan,ocel:type:bonus
+1,20/05/2019 09:07,Determine assessment plan,,['Li'],['Zhuguan'],,,['Li_2021_plan'],
+2,20/05/2019 10:35,Estab['Li']sh assessment,,['Li'],['Zhuguan'],,,,
+3,20/05/2019 10:38,Upload personal achievements,,['Li'],,['ac1'],,,
+4,20/05/2019 11:13,Upload pub['Li']c service achievements,,['Li'],,['ac2'],,,
+5,20/05/2019 11:20,Upload teaching task achievements,,['Li'],,['ac3'],,,
+6,20/05/2019 12:30,Submit achievements,,['Li'],,"['ac1'],['ac2'],['ac3']",,,
+7,20/05/2019 12:34,Manual review (achievements rejected),,,['Zhuguan'],"['ac1'],['ac2'],['ac3']",,,
+8,20/05/2019 13:54,Update personal achievements,,['Li'],,['ac1'],,,
+9,20/05/2019 14:20,Submit achievements,,['Li'],,"['ac1'],['ac2'],['ac3']",,,
+10,20/05/2019 15:19,Manual review (achievements accepted),,,['Zhuguan'],"['ac1'],['ac2'],['ac3']",,,
+11,20/05/2019 16:01,Converse achievements (System),,,,"['ac1'],['ac2'],['ac3']",['c1'],['Li_2021_plan'],
+12,20/05/2019 16:56,Handle unmatched achievements,,,['Zhuguan'],['ac1'],['c1'],['Li_2021_plan'],
+13,20/05/2019 17:08,Converse achievements (Manual intervention),,,['Zhuguan'],['ac1'],['c1'],['Li_2021_plan'],
+14,20/05/2019 17:22,Confirm conversion results, ,['Li'],,"['ac1'],['ac2'],['ac3']",['c1'],['Li_2021_plan'],
+15,20/05/2019 17:51,Calculate completion rate,,,,,['c1'],['Li_2021_plan'],
+16,20/05/2019 18:15,Calculate Bonus,15000,,,,['c1'],['Li_2021_plan'],['b1']
+17,20/05/2019 18:36,Receive Bonus,15000,['Li'],,,,,['b1']
+18,20/05/2019 19:04,Update staff information,,['Wong'],['Zhuguan'],,,,
+19,20/05/2019 21:49,Determine assessment plan,,['Wong'],['Zhuguan'],,,['Wong_2021_plan'],
+20,21/05/2019 07:13,Estab['Li']sh assessment,,['Wong'],['Zhuguan'],,,,
+21,21/05/2019 08:23,Upload personal achievements,,['Wong'],,['ac4'],,,
+22,21/05/2019 08:55,Upload pub['Li']c service achievements,,['Wong'],,['ac5'],,,
+23,21/05/2019 09:14,Upload teaching task achievements,,['Wong'],,['ac6'],,,
+24,21/05/2019 09:43,Submit achievements,,['Wong'],,"['ac4'],['ac5'],['ac6']",,,
+25,21/05/2019 09:58,Manual review (achievements accepted),,,['Zhuguan'],"['ac4'],['ac5'],['ac6']",,,
+26,21/05/2019 10:03,Converse achievements (System),,,,"['ac4'],['ac5'],['ac6']",['c2'],,
+27,21/05/2019 10:34,Confirm conversion results,,['Wong'],,"['ac4'],['ac5'],['ac6']",['c2'],['Wong_2021_plan'],
+28,21/05/2019 10:41,Calculate completion rate,,,,,['c2'],['Wong_2021_plan'],
+29,21/05/2019 10:49,Calculate Bonus,2000,,,,['c2'],['Wong_2021_plan'],['b2']
+30,21/05/2019 12:15,Receive Bonus,2000,['Wong'],,,,['Wong_2021_plan'],['b2']

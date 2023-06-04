@@ -1,3 +1,5 @@
+import math
+
 import networkx as nx
 
 
@@ -78,7 +80,48 @@ def get_similarity_score(label_dict_for_digraph1, label_dict_for_digraph2):
         by the hashes in order of depth from the key node.
     '''
     # change the dict to two vector
-    score = sum(label_dict_for_digraph1[k] * label_dict_for_digraph2[k]
+    dist_digraph1 = math.sqrt(sum(label_dict_for_digraph1[k] * label_dict_for_digraph1[k]
+                              for k in label_dict_for_digraph1.keys()))
+    dist_digraph2 = math.sqrt(sum(label_dict_for_digraph2[k] * label_dict_for_digraph2[k]
+                              for k in label_dict_for_digraph2.keys()))
+    score = sum(label_dict_for_digraph1[k] / dist_digraph1 * label_dict_for_digraph2[k]/dist_digraph2
+                for k in label_dict_for_digraph1.keys()&label_dict_for_digraph2.keys())
+    return score
+
+def get_oa_similarity_score(label_dict_for_digraph1, label_dict_for_digraph2):
+    '''
+    Return the similarity score of two different graph
+
+    Parameters
+    ----------
+    G: graph
+        The graph to be hashed.
+        Can have node and/or edge attributes. Can also have no attributes.
+    edge_attr: string, default=None
+        The key in edge attribute dictionary to be used for hashing.
+        If None, edge labels are ignored.
+    node_attr: string, default=None
+        The key in node attribute dictionary to be used for hashing.
+        If None, and no edge_attr given, use the degrees of the nodes as labels.
+    iterations: int, default=3
+        Number of neighbor aggregations to perform.
+        Should be larger for larger graphs.
+    digest_size: int, default=16
+        Size (in bits) of blake2b hash digest to use for hashing node labels.
+        The default size is 16 bits
+
+    Returns
+    -------
+    new dictionary : dict
+        A dictionary with each key given by a node in G, and each value given
+        by the hashes in order of depth from the key node.
+    '''
+    # change the dict to two vector
+    dist_digraph1 = math.sqrt(sum(label_dict_for_digraph1[k] * label_dict_for_digraph1[k]
+                              for k in label_dict_for_digraph1.keys()))
+    dist_digraph2 = math.sqrt(sum(label_dict_for_digraph2[k] * label_dict_for_digraph2[k]
+                              for k in label_dict_for_digraph2.keys()))
+    score = sum(min(label_dict_for_digraph1[k] / dist_digraph1, label_dict_for_digraph2[k]/dist_digraph2)
                 for k in label_dict_for_digraph1.keys()&label_dict_for_digraph2.keys())
     return score
 
@@ -86,7 +129,6 @@ def get_similarity_score(label_dict_for_digraph1, label_dict_for_digraph2):
 def get_normalized_similarity_score(digraph1, digraph2, int_id, iteration=1):
     '''
     Return the normzalized similarity score of two different graph
-
     '''
     label_dict_for_digraph1, label_dict_for_digraph2, possible_label_dict = {}, {}, {}
     update_hash_label_vec(digraph1, digraph2, label_dict_for_digraph1,label_dict_for_digraph2)
